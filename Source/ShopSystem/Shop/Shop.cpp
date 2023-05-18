@@ -15,7 +15,7 @@ AShop::AShop()
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	if (StaticMeshComponent)
 	{
-		StaticMeshComponent->SetupAttachment(RootComponent);
+		RootComponent = StaticMeshComponent;
 	}
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
