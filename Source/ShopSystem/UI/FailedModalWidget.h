@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "FailedModal.generated.h"
+#include "FailedModalWidget.generated.h"
 
 
 // Forward Declarations
@@ -13,7 +13,7 @@ class UTextBlock;
 
 
 UCLASS()
-class SHOPSYSTEM_API UFailedModal : public UUserWidget
+class SHOPSYSTEM_API UFailedModalWidget : public UUserWidget
 {
 	GENERATED_BODY()
 

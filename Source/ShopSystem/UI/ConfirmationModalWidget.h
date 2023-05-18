@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 
-#include "ConfirmationModal.generated.h"
+#include "ConfirmationModalWidget.generated.h"
 
 
 // Forward Declarations
@@ -14,7 +14,7 @@ class UTextBlock;
 
 
 UCLASS()
-class SHOPSYSTEM_API UConfirmationModal : public UUserWidget
+class SHOPSYSTEM_API UConfirmationModalWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
