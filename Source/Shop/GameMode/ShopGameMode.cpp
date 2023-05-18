@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "ShopGameMode.h"
-#include "ShopCharacter.h"
+#include "Shop/PlayerCharacter/ShopCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AShopGameMode::AShopGameMode()
