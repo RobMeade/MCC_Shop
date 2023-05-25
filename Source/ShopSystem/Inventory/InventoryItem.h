@@ -25,9 +25,6 @@ public:
 
 protected:
 
-
-private:
-
 	UPROPERTY(EditAnywhere, Category = "Item")
 	FGameplayTag ID;
 
@@ -38,11 +35,15 @@ private:
 	FString Description;
 
 	UPROPERTY(EditAnywhere, Category = "Item")
-	EInventoryCategory Category;
+	EInventoryCategory Category = EInventoryCategory::None;
 
 	UPROPERTY(EditAnywhere, Category = "Item")
-	int32 Cost;
+	int32 Cost = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Item")
-	UTexture2D* Texture;
+	UTexture2D* Texture = nullptr;
+
+private:
+
+
 };

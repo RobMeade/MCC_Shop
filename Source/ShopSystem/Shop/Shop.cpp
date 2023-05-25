@@ -45,3 +45,8 @@ UInventoryComponent* AShop::GetInventoryComponent() const
 {
 	return InventoryComponent;
 }
+
+void AShop::Interact()
+{
+	// TODO:
+}

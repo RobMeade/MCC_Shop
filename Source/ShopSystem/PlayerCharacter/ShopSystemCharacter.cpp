@@ -10,6 +10,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
+#include "ShopSystem/Shop/ShopInterface.h"
+
 
 //////////////////////////////////////////////////////////////////////////
 // AShopSystemCharacter
@@ -63,6 +65,32 @@ void AShopSystemCharacter::BeginPlay()
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
+	}
+
+	if (GetCapsuleComponent())
+	{
+		GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AShopSystemCharacter::OnCapsuleBeginOverlap);
+		GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &AShopSystemCharacter::OnCapsuleEndOverlap);
+	}
+}
+
+void AShopSystemCharacter::OnCapsuleBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (IShopInterface* ShopInterface = Cast<IShopInterface>(OtherActor))
+	{
+		// TODO: Shop entered
+
+		OnShopEntered.Broadcast();
+	}
+}
+
+void AShopSystemCharacter::OnCapsuleEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (IShopInterface* ShopInterface = Cast<IShopInterface>(OtherActor))
+	{
+		// TODO: Shop exited (might not be necessary)
+
+		OnShopExited.Broadcast();
 	}
 }
 

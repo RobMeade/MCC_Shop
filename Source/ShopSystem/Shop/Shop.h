@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
+#include "ShopInterface.h"
+
 #include "Shop.generated.h"
 
 
@@ -14,7 +16,7 @@ class UInventoryComponent;
 
 
 UCLASS()
-class SHOPSYSTEM_API AShop : public AActor
+class SHOPSYSTEM_API AShop : public AActor, public IShopInterface
 {
 	GENERATED_BODY()
 
@@ -26,6 +28,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UInventoryComponent* GetInventoryComponent() const;
+
+	virtual void Interact() override;
 
 
 protected:

@@ -8,6 +8,11 @@
 #include "ShopSystemCharacter.generated.h"
 
 
+// Delegate Declarations
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShopSystemCharacter_OnShopEntered);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShopSystemCharacter_OnShopExited);
+
+
 UCLASS(config=Game)
 class AShopSystemCharacter : public ACharacter
 {
@@ -38,8 +43,12 @@ class AShopSystemCharacter : public ACharacter
 	class UInputAction* LookAction;
 
 public:
+
 	AShopSystemCharacter();
-	
+
+	FShopSystemCharacter_OnShopEntered OnShopEntered;
+	FShopSystemCharacter_OnShopExited OnShopExited;
+
 
 protected:
 
@@ -62,5 +71,13 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-};
 
+
+private:
+
+	UFUNCTION()
+	void OnCapsuleBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void OnCapsuleEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+};
