@@ -52,6 +52,12 @@ private:
 	UFUNCTION()
 	void ExitShop();
 
+	UFUNCTION()
+	void CloseSuccessModal();
+
+	UFUNCTION()
+	void CloseFailedModal();
+
 	/*
 	 * UI Widgets
 	 */
@@ -78,4 +84,6 @@ private:
 
 	UPROPERTY()
 	UFailedModalWidget* FailedModalWidget = nullptr;
+
+	int32 GoldCoins;
 };

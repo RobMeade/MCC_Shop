@@ -77,12 +77,12 @@ void AShopSystemPlayerController::BindToUIEvents()
 
 	if (SuccessModalWidget)
 	{
-		// TODO: Bind to events
+		SuccessModalWidget->OnCloseButtonClicked.AddDynamic(this, &AShopSystemPlayerController::CloseSuccessModal);
 	}
 
 	if (FailedModalWidget)
 	{
-		// TODO: Bind to events
+		FailedModalWidget->OnCloseButtonClicked.AddDynamic(this, &AShopSystemPlayerController::CloseFailedModal);
 	}
 }
 
@@ -142,7 +142,15 @@ void AShopSystemPlayerController::DisplayShop()
 
 void AShopSystemPlayerController::BuyCurrency()
 {
-	/// TODO: Buy Currency
+	// TODO: Stripped down process, just give some Gold Coins
+	GoldCoins += 100;
+
+	if (SuccessModalWidget)
+	{
+		SuccessModalWidget->SetSuccessMessage("You have bought 100 Gold Coins");
+		ToggleWidgetVisibility(SuccessModalWidget);
+		SetInputModeForUI(SuccessModalWidget);
+	}
 }
 
 void AShopSystemPlayerController::DisplayInventory()
@@ -154,4 +162,16 @@ void AShopSystemPlayerController::ExitShop()
 {
 	ToggleWidgetVisibility(ShopWidget);
 	SetInputModeForGame();
+}
+
+void AShopSystemPlayerController::CloseSuccessModal()
+{
+	ToggleWidgetVisibility(SuccessModalWidget);
+	SetInputModeForUI(ShopWidget);
+}
+
+void AShopSystemPlayerController::CloseFailedModal()
+{
+	ToggleWidgetVisibility(FailedModalWidget);
+	SetInputModeForUI(ShopWidget);
 }

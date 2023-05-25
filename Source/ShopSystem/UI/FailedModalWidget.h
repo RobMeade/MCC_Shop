@@ -11,6 +11,9 @@
 class UButton;
 class UTextBlock;
 
+// Delegate Declarations
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FFailedModalWidget_OnCloseButtonClicked);
+
 
 UCLASS()
 class SHOPSYSTEM_API UFailedModalWidget : public UUserWidget
@@ -22,11 +25,22 @@ public:
 
 	void SetFailureMessage(const FString& Message) const;
 
+	// Delegates
+	FFailedModalWidget_OnCloseButtonClicked OnCloseButtonClicked;
+
 
 protected:
 
+	virtual void NativeConstruct() override;
+
 
 private:
+
+	void BindToUIEvents();
+
+	UFUNCTION()
+	void OnClickedCloseButton();
+
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* FailureText = nullptr;
