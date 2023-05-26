@@ -28,6 +28,8 @@ class SHOPSYSTEM_API UShopWidget : public UUserWidget
 
 public:
 
+	void UpdateGoldCoins(const int32& Value) const;
+
 	// Delegates
 	FShopWidget_OnBuyCurrencyButtonClicked OnBuyCurrencyButtonClicked;
 	FShopWidget_OnShopButtonClicked OnShopButtonClicked;

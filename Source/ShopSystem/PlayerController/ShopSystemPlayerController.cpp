@@ -18,6 +18,7 @@ void AShopSystemPlayerController::BeginPlay()
 	CreateUIWidgets();
 	BindToCharacterEvents();
 	BindToUIEvents();
+	UpdateGoldCoins(GoldCoins);
 }
 
 void AShopSystemPlayerController::CreateUIWidgets()
@@ -134,6 +135,14 @@ void AShopSystemPlayerController::SetInputModeForGame()
 	bShowMouseCursor = false;
 }
 
+void AShopSystemPlayerController::UpdateGoldCoins(const int32& Value) const
+{
+	if (ShopWidget)
+	{
+		ShopWidget->UpdateGoldCoins(Value);
+	}
+}
+
 void AShopSystemPlayerController::DisplayShop()
 {
 	ToggleWidgetVisibility(ShopWidget);
@@ -151,6 +160,8 @@ void AShopSystemPlayerController::BuyCurrency()
 		ToggleWidgetVisibility(SuccessModalWidget);
 		SetInputModeForUI(SuccessModalWidget);
 	}
+
+	UpdateGoldCoins(GoldCoins);
 }
 
 void AShopSystemPlayerController::DisplayInventory()

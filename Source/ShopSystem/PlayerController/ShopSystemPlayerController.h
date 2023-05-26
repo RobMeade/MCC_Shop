@@ -39,6 +39,7 @@ private:
 	void ToggleWidgetVisibility(UUserWidget* Widget);
 	void SetInputModeForUI(const UUserWidget* WidgetToFocus);
 	void SetInputModeForGame();
+	void UpdateGoldCoins(const int32& Value) const;
 
 	UFUNCTION()
 	void DisplayShop();
@@ -85,5 +86,5 @@ private:
 	UPROPERTY()
 	UFailedModalWidget* FailedModalWidget = nullptr;
 
-	int32 GoldCoins;
+	int32 GoldCoins = 0;
 };

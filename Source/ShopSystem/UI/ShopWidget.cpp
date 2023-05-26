@@ -3,6 +3,7 @@
 #include "ShopWidget.h"
 
 #include "Components/Button.h"
+#include "Components/TextBlock.h"
 
 
 void UShopWidget::NativeConstruct()
@@ -53,4 +54,13 @@ void UShopWidget::OnClickedInventoryButton()
 void UShopWidget::OnClickedExitButton()
 {
 	OnExitButtonClicked.Broadcast();
+}
+
+void UShopWidget::UpdateGoldCoins(const int32& Value) const
+{
+	if (GoldCoins)
+	{
+		const FString ValueString = FString::FromInt(Value);
+		GoldCoins->SetText(FText::FromString(ValueString));
+	}
 }
